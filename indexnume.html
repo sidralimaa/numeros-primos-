@@ -1,0 +1,70 @@
+<!-- 
+Nome: Isaac Sidra Ismail de Lima No17
+Nome: Otavio Parlermo Santos No
+Nome: Cauã Salvi Lopes No
+ -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,
+initial-scale=1.0">
+<title>Verificar Números Primos</title>
+</head>
+
+<body>
+<h1>Calculadora de numeros primos</h1>
+
+<label for="numero">Digite um número natural:</label>
+<input type="text" id="numero" placeholder="Digite o número natural">
+
+<button onclick="verificarPrimo()">Verificar</button><br><br>
+
+<canvas id="resultadoCanvas" width="300" height="400"
+style="border:30px solid #000;"></canvas>
+
+<script>
+function isPrimo(num) {
+if (num <= 1) return false;
+for (let i = 2; i <= Math.sqrt(num); i++) {
+if (num % i === 0) {
+return false;
+}
+}
+return true;
+}
+
+function verificarPrimo() {
+const inputNumero = document.getElementById('numero');
+
+const resultadoCanvas =
+
+document.getElementById('resultadoCanvas');
+
+const numero = parseInt(inputNumero.value);
+
+if (isNaN(numero)) {
+alert('Por favor, digite um número válido.');
+return;
+}
+
+const ctx = resultadoCanvas.getContext('2d');
+ctx.clearRect(0, 0, resultadoCanvas.width,
+
+resultadoCanvas.height);
+
+ctx.font = '35px Arial';
+
+if (isPrimo(numero)) {
+ctx.fillStyle = 'green';
+ctx.fillText(`${numero} é primo.`, 40, 160);
+} else {
+ctx.fillStyle = 'red';
+ctx.fillText(`${numero} não é primo.`, 40, 160);
+}
+}
+</script>
+
+</body>
+</html>
